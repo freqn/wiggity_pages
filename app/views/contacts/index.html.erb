@@ -2,6 +2,7 @@
 
 <ul>
   <% @contacts.each do |contact|%>
-  <li><%= contact.name %></li>
+  <li><%= link_to contact.name, "/contacts/#{contact.id}" %></li>
   <% end%>
 </ul>
+<p><%= link_to 'New', '/contacts/new' %></p>
