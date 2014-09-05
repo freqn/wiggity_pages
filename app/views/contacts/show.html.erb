@@ -1,4 +1,6 @@
 <h1><%= @contact.name %></h1>
 <p>Phone: <%= @contact.phone %></p>
 <p>Email: <%= @contact.email %></p>
+<p><%= link_to 'Edit', "/contacts/#{@contact.id}/edit" %></p>
+<p><%= link_to 'Delete', "/contacts/#{@contact.id}", confirm: "Are you sure?", method: :delete %></p>
 <p><%= link_to 'Contacts', '/contacts' %></p>

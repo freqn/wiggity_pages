@@ -1,14 +1,6 @@
 <h1>Edit contact</h1>
 
-<% if @contact.errors.any? %>
-  <h3>Please fix these errors: </h3>
-  <ul>
-    <% @contact.errors.full_messages.each  do |error|%>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
 
-<% end %>
 
 <form action="/contacts/<%= @contact.id %>" method="post">
   <input name="_method" type="hidden" value="patch">
