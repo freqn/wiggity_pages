@@ -6,12 +6,14 @@ def index
 end
 
 def new
-  @contact = Contact.new(params[:contact])
+  @contact = Contact.new
   render 'contacts/new'
 end
 
 def create
-  @contact = Contact.new(params[:contact])
+  @contact = Contact.new name: params[:name],
+                          email: params[:email],
+                            phone: params[:phone]
   if @contact.save
     render 'contacts/success'
   else
