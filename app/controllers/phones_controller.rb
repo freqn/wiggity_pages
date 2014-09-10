@@ -34,4 +34,11 @@ class PhonesController < ApplicationController
     end
   end
 
+  def destroy
+    @contact = Contact.find(params[:contact_id])
+    @phone = Phone.find(params[:id])
+    @phone.destroy
+    render('phones/destroy')
+  end
+
 end

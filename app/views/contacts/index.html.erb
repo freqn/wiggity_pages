@@ -2,7 +2,7 @@
 
 <ul>
   <% @contacts.each do |contact|%>
-  <li><%= link_to contact.name, "/contacts/#{contact.id}" %></li>
+  <li><%= link_to contact.name, "/contacts/#{contact.id}" %> <%= link_to 'Delete', "/contacts/#{contact.id}", confirm: "Are you sure?", method: :delete %></li>
   <% end%>
 </ul>
 <p><%= link_to 'New', '/contacts/new' %></p>
