@@ -1,0 +1,10 @@
+<h1>Edit <%= @contact.name.split(' ')[0] %>'s phone </h1>
+
+<form action="/contacts/<%= @phone.contact.id %>/phones/<%= @phone.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="phone_number">Number</label>
+  <input id="phone_number" name="number" type="text" value="<%= @phone.number%>">
+  <button>Update phone</button>
+</form>
+<br/>
+<a href="/contacts/<%= @contact.id %>">Back to <%= @contact.name %></a>
