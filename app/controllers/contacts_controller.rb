@@ -2,12 +2,10 @@ class ContactsController < ApplicationController
 
 def index
   @contacts = Contact.all
-  render 'contacts/index'
 end
 
 def new
   @contact = Contact.new
-  render 'contacts/new'
 end
 
 def create
@@ -15,15 +13,15 @@ def create
                           email: params[:email],
                             phone: params[:phone]
   if @contact.save
-    render 'contacts/success'
+    flash[:notice] = 'Contact added.'
+    redirect_to contacts_path
   else
-    render 'contacts/new'
+    render 'new'
   end
 end
 
 def edit
   @contact = Contact.find(params[:id])
-  render 'contacts/edit'
 end
 
 def update
@@ -31,21 +29,22 @@ def update
   if @contact.update name: params[:name],
                       email: params[:email],
                         phone: params[:phone]
-    render 'contacts/success'
+    flash[:notice] = 'Contact updated.'
+    redirect_to contact_path(@contact)
   else
-    render 'contacts/edit'
+    render 'edit'
   end
 end
 
 def show
   @contact = Contact.find(params[:id])
-  render 'contacts/show'
 end
 
 def destroy
   @contact = Contact.find(params[:id])
   @contact.destroy
-  render 'contacts/destroy'
+  flash[:notice] = 'Contact removed.'
+  redirect_to contacts_path
 end
 
 

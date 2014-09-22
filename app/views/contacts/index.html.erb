@@ -1,8 +1,10 @@
+<% content_for(:title, "Wikipages") %>
+
 <h1>Contacts</h1>
 
 <ul>
   <% @contacts.each do |contact|%>
-  <li><%= link_to contact.name, "/contacts/#{contact.id}" %> <%= link_to 'Delete', "/contacts/#{contact.id}", confirm: "Are you sure?", method: :delete %></li>
+  <li><%= link_to contact.name, "/contacts/#{contact.id}", style: "text-decoration:none;" %> | <%= link_to 'Delete', "/contacts/#{contact.id}", confirm: "Are you sure?", method: :delete %></li>
   <% end%>
 </ul>
-<p><%= link_to 'New', '/contacts/new' %></p>
+<p><%= link_to '+', new_contact_path, style: "text-decoration: none;font-size:2.5em;" %></p>

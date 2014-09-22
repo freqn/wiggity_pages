@@ -2,7 +2,7 @@ class PhonesController < ApplicationController
   def new
     @contact = Contact.find(params[:contact_id])
     @phone = @contact.phones.new
-    render('phones/new')
+    render 'new'
   end
 
   def create
@@ -10,16 +10,17 @@ class PhonesController < ApplicationController
                         contact_id: params[:contact_id]
     @contact = Contact.find(params[:contact_id])
     if @phone.save
-      render('phones/success')
+      flash[:notice] = "Phone number added."
+      redirect_to contact_path(@contact)
     else
       render('phones/new')
-    end 
+    end
   end
 
   def edit
     @contact = Contact.find(params[:contact_id])
     @phone = Phone.find(params[:id])
-    render 'phones/edit'
+    render 'edit'
   end
 
   def update
@@ -27,8 +28,8 @@ class PhonesController < ApplicationController
     @phone = Phone.find(params[:id])
     if @phone.update number: params[:number],
                       contact_id: params[:contact_id]
-
-      render('phones/updated')
+      flash[:notice] = "Phone number updated."
+      redirect_to contact_path(@contact)
     else
       render('phones/edit')
     end
@@ -38,7 +39,8 @@ class PhonesController < ApplicationController
     @contact = Contact.find(params[:contact_id])
     @phone = Phone.find(params[:id])
     @phone.destroy
-    render('phones/destroy')
+    flash[:notice] = "Phone number removed."
+    redirect_to contact_path(@contact)
   end
 
 end
