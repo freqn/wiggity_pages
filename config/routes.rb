@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  match '/', {via: :get, to: 'contacts#index'}
+  root 'contacts#index'
+  # match '/', {via: :get, to: 'contacts#index'}
 
   resources :contacts do
     resources :phones, only: [:new, :create] # Nested route example
