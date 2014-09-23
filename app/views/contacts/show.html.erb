@@ -3,23 +3,30 @@
 <h1><%= @contact.name %></h1>
 <p>Phone: <%= @contact.phone %></p>
 <p>Email: <%= @contact.email %></p>
-<p><%= link_to 'Edit', "/contacts/#{@contact.id}/edit" %></p>
-<p><%= link_to 'Delete', "/contacts/#{@contact.id}", confirm: "Are you sure?", method: :delete %></p>
+<p><%= link_to 'Edit', edit_contact_path(@contact),
+                                      class: 'btn btn-default' %></p>
+<p><%= link_to 'Delete', "/contacts/#{@contact.id}",
+                                      confirm: "Are you sure?",
+                                      method: :delete,
+                                      class: 'btn btn-default' %></p>
 <p>Phones:</p>
 
-<ul>
+  <% count = 0%>
   <% @contact.phones.each do |phone| %>
-    <li>
-      <%= phone.number %> |
-      <a href="/contacts/<%= @contact.id %>/phones/<%= phone.id %>/edit">Edit</a> |
-      <a href="/contacts/<%= @contact.id %>/phones/<%= phone.id %>"
-         data-confirm="You sure?"
-         data-method="delete"
-         rel="nofollow">Delete</a>
-    </li>
+    <row>
+      <% count += 1 %>
+      <%= count %>) &nbsp<%= phone.number %> |
+      <%= link_to '', "/contacts/#{@contact.id}/phones/#{phone.id}/edit",
+                                      class: 'glyphicon glyphicon-cog' %> |
+      <%= link_to '', "/contacts/#{@contact.id}/phones/#{phone.id}",
+                                      method: :delete,
+                                      class: 'glyphicon glyphicon-trash' %>
+    </row><br/>
   <% end %>
-</ul>
 
 
-<a href="/contacts/<%= @contact.id %>/phones/new">Add phone</a>
-<p><%= link_to 'Contacts', '/contacts' %></p>
+<p><%= link_to 'Add phone', "/contacts/#{@contact.id}/phones/new",
+                                      style: "margin-top:1em;",
+                                      class: 'btn btn-default' %></p>
+<p><%= link_to 'Contacts', contacts_path,
+                                      class: 'btn btn-default' %></p>
