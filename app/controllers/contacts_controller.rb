@@ -9,9 +9,9 @@ def new
 end
 
 def create
-  @contact = Contact.new name: params[:name],
-                          email: params[:email],
-                            phone: params[:phone]
+  @contact = Contact.new name: params[:contact][:name],
+                          email: params[:contact][:email],
+                            phone: params[:contact][:phone]
   if @contact.save
     flash[:notice] = "#{@contact.name} added."
     redirect_to contacts_path
@@ -26,9 +26,9 @@ end
 
 def update
   @contact = Contact.find(params[:id])
-  if @contact.update name: params[:name],
-                      email: params[:email],
-                        phone: params[:phone]
+  if @contact.update name: params[:contact][:name],
+                      email: params[:contact][:email],
+                        phone: params[:contact][:phone]
     flash[:notice] = 'Contact updated.'
     redirect_to contact_path(@contact)
   else
