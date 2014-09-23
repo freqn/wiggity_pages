@@ -13,7 +13,7 @@ def create
                           email: params[:email],
                             phone: params[:phone]
   if @contact.save
-    flash[:notice] = 'Contact added.'
+    flash[:notice] = "#{@contact.name} added."
     redirect_to contacts_path
   else
     render 'new'

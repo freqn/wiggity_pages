@@ -1,5 +1,6 @@
 <% content_for(:title, "Edit #{@phone.number} | Wikipages") %>
 
+
 <h1>Edit <%= @contact.name.split(' ')[0] %>'s phone </h1>
 
 <form action="/contacts/<%= @phone.contact.id %>/phones/<%= @phone.id %>" method="post">
