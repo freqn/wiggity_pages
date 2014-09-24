@@ -26,8 +26,7 @@ class PhonesController < ApplicationController
   def update
     @contact = Contact.find(params[:contact_id])
     @phone = Phone.find(params[:id])
-    if @phone.update number: params[:phone][:number],
-                      contact_id: params[:contact_id]
+    if @phone.update(phone_params)
       flash[:notice] = "Phone number updated."
       redirect_to contact_path(@contact)
     else
@@ -41,6 +40,12 @@ class PhonesController < ApplicationController
     @phone.destroy
     flash[:notice] = "Phone number removed."
     redirect_to contact_path(@contact)
+  end
+
+  private
+
+  def phone_params
+    params.require(:phone).permit(:number)
   end
 
 end

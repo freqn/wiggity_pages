@@ -1,7 +1,7 @@
 <% content_for(:title, "#{@contact.name} | Wikipages") %>
 
 <h1><%= @contact.name %></h1>
-<p class="sm-indent">Phone: <%= @contact.phone %></p>
+<p class="sm-indent">Main Phone: <%= @contact.phone %></p>
 <p class="sm-indent">Email: <%= @contact.email %></p>
 <p class="sm-indent"><%= link_to 'Edit', edit_contact_path(@contact),
                                       class: 'btn btn-default' %></p>
