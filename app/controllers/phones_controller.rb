@@ -9,7 +9,7 @@ class PhonesController < ApplicationController
     @phone = Phone.new number: params[:phone][:number],
                         contact_id: params[:contact_id]
     @contact = Contact.find(params[:contact_id])
-    if @phone.save!
+    if @phone.save
       flash[:notice] = "Phone number added."
       redirect_to contact_path(@contact)
     else
