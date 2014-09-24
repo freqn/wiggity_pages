@@ -6,10 +6,10 @@ class PhonesController < ApplicationController
   end
 
   def create
-    @phone = Phone.new number: params[:number],
+    @phone = Phone.new number: params[:phone][:number],
                         contact_id: params[:contact_id]
     @contact = Contact.find(params[:contact_id])
-    if @phone.save
+    if @phone.save!
       flash[:notice] = "Phone number added."
       redirect_to contact_path(@contact)
     else
@@ -26,7 +26,7 @@ class PhonesController < ApplicationController
   def update
     @contact = Contact.find(params[:contact_id])
     @phone = Phone.find(params[:id])
-    if @phone.update number: params[:number],
+    if @phone.update number: params[:phone][:number],
                       contact_id: params[:contact_id]
       flash[:notice] = "Phone number updated."
       redirect_to contact_path(@contact)

@@ -1,0 +1,7 @@
+<%= form_for @phone, url: {action: "create"} do |f|%>
+  <div class="form-group ">
+    <%= f.label :number, class: "col-sm-1 control-label" %>
+    <%= f.text_field :number, style: "margin-bottom: 1em" %>
+  </div>
+  <%= f.submit(class: "btn btn-primary ", style: "margin-bottom: 1em")%>
+<% end %>

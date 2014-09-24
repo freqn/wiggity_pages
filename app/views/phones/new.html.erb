@@ -1,10 +1,6 @@
-<% content_for(:title, "New phone for #{@phone.contact.name} | Wikipages") %>
+<% content_for(:title, "#{@phone.contact.name} | Wikipages") %>
 
-<h1>New phone number for <%= @phone.contact.name %></h1>
+<h1>Add new number for <%= @phone.contact.name %></h1>
 
 <%= render 'errors'%>
-
-<form action="/contacts/<%= @phone.contact.id %>/phones" method="post">
-  <%= render 'form'%>
-  <p><button class="btn btn-default" style="margin-top:1em;">Add</button></p>
-</form>
+<%= render 'form_1'%>
