@@ -42,8 +42,9 @@ end
 
 def destroy
   @contact = Contact.find(params[:id])
+  @person = @contact.name
   @contact.destroy
-  flash[:notice] = 'Contact removed.'
+  flash[:notice] = "#{@person} was removed"
   redirect_to contacts_path
 end
 
